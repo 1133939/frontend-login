@@ -1,0 +1,19 @@
+.tamanho{
+    position: relative;
+    width: 300px;
+    background-color: white;
+}
+a.direita{
+    position:relative;
+    right: -100px;
+}
+a.direita:hover{
+    color: gray;
+
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-valid.ng-touched{
+    border: 1px solid green
+}

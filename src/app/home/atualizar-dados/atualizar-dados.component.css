@@ -1,0 +1,32 @@
+.tamanho{
+    position: relative;
+    width: 300px;
+    background-color: white;
+}
+a.direita{
+    position:relative;
+    right: -100px;
+}
+a.direita:hover{
+    color: gray;
+
+}
+h5{
+
+        font-family: Impact, Charcoal, sans-serif;
+        font-size: 25px;
+        letter-spacing: 6px;
+        word-spacing: 6px;
+        color: #423C44;
+        font-weight: 400;
+        text-decoration: none solid rgb(68, 68, 68);
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+}
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-valid.ng-touched{
+    border: 1px solid green
+}

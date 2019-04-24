@@ -1,0 +1,12 @@
+<img class="lock-center" src="../../assets/img1.png" [@oscila-imagem]=estado>
+<div class="centro">
+  <div *ngIf="cadastro; else formLogin" [@change-component]="component">
+<app-cadastro (exibirLogin)="changePanel($event)"></app-cadastro>
+</div>
+<ng-template #formLogin >
+  <div [@change-component]="component">
+<app-login (exibirCadastro)="changePanel($event)"></app-login>
+</div>
+</ng-template>
+</div>
+
