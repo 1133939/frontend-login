@@ -14,11 +14,27 @@
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" #pesquisaString>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="showPesquisar(pesquisaString.value)">Pesquisar</button>
     </form>
   </div>
 </nav>
 <div class="centro" *ngIf="atualizar">
   <app-atualizar-dados></app-atualizar-dados>
 </div>
+<div class="centro" *ngIf="pesquisar">
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#ID</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <th scope="row">{{usuario.id}}</th>
+            <td>{{usuario.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
