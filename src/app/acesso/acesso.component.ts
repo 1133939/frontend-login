@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {trigger, state, transition, animate, style} from '@angular/animations'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acesso',
@@ -34,11 +35,14 @@ export class AcessoComponent implements OnInit {
 public estado : string = 'hidden';
 public component : string = 'created'
 public cadastro : boolean = false;
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
     this.logoOscila()
-  }
+    if(localStorage.getItem('user')!="null"){
+      this.router.navigate(['/home'])
+    }
+    }
 public changePanel(event : string){
 this.cadastro= event=='cadastro' ? true : false;
 }

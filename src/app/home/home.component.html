@@ -10,7 +10,7 @@
         <a class="nav-link" (click)="showAtualizarDados()">Atualizar Dados</a>
       </li>
       <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+          <a class="nav-link" (click)="logout()">Logout</a>
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -23,18 +23,31 @@
   <app-atualizar-dados></app-atualizar-dados>
 </div>
 <div class="centro" *ngIf="pesquisar">
-    <table class="table">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#ID</th>
-            <th scope="col">Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let usuario of usuarios">
-            <th scope="row">{{usuario.id}}</th>
-            <td>{{usuario.email}}</td>
-          </tr>
-        </tbody>
-      </table>
+
+<div *ngFor="let rifa of rifas; let i = index">     
+
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">{{rifa.nome}}</h4>
+            <p class="card-text">Rifas compradas: {{rifa.usuarios.length}}</p>
+            <p class="preco">Faltam {{rifa.quantidade - rifa.usuarios.length}} rifas para o sorteio</p>
+            <p class="preco">Qtd total de rifas: {{rifa.quantidade}}</p>
+            <div *ngIf="i%2==0; else changeButtonColor">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="color:yellow;">Adquirir rifa</button>
+            </div>
+            <ng-template #changeButtonColor>
+                <button type="button" class="btn btn-primary btn-lg btn-block">Adquirir rifa</button>
+            </ng-template>
+            
+            
+          </div>
+      </div>
+
+    
+  </div>
+
+
+
+
+
   </div>

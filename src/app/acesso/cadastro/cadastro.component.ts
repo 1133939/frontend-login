@@ -12,7 +12,8 @@ import { UsuarioService } from 'src/app/usuario.service';
 export class CadastroComponent implements OnInit {
 @Output() public exibirLogin : EventEmitter<string> = new EventEmitter();
 public form : FormGroup = new FormGroup({
-  'email' : new FormControl(null, [Validators.email, Validators.required]),
+  'usuario' : new FormControl(null, [Validators.required, Validators.minLength(5)]),
+  'nome' : new FormControl(null, [Validators.minLength(5), Validators.required]),
   'senha' : new FormControl(null, [Validators.minLength(5), Validators.required]),
   'confirmarSenha' : new FormControl(null, [Validators.minLength(5), Validators.required])
 })
@@ -25,13 +26,14 @@ this.exibirLogin.emit('login');
   }
 cadastrarUsuario() : void{
   if(this.form.value.confirmarSenha == this.form.value.senha && this.form.valid){
-  let usuario : Usuario = new Usuario(null, this.form.value.email, this.form.value.senha)
+  let usuario : Usuario = new Usuario(null, this.form.value.usuario, this.form.value.nome, this.form.value.senha)
     this.service.insertUsuario(usuario).subscribe((response : number) => {
       console.log(response)
       alert('Cadastrado com sucesso')
     })
 }else{
-  this.form.get('email').markAsTouched()
+  this.form.get('usuario').markAsTouched()
+  this.form.get('nome').markAsTouched()
   this.form.get('senha').markAsTouched()
   this.form.get('confirmarSenha').markAsTouched()
   alert('Preencha os campos para se cadastrar')
