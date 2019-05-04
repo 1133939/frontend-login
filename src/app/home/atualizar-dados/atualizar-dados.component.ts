@@ -12,12 +12,11 @@ import { JwtHelperService  } from '@auth0/angular-jwt';
 })
 export class AtualizarDadosComponent implements OnInit {
 public formulario : FormGroup = new FormGroup({
-  'usuario': new FormControl(null,[Validators.minLength(5)]),
   'nome': new FormControl(null,[Validators.minLength(5)]),
   'senha': new FormControl(null,[Validators.minLength(5)]),
   'confirmarSenha': new FormControl(null,[Validators.minLength(5)])
 })
-public usuario : Usuario = new Usuario(null,null,null,null);
+public usuario : Usuario = new Usuario(null,null,null,null,null);
 public jwtHelperService: JwtHelperService  = new JwtHelperService ();
   constructor(private service : UsuarioService) { }
 
@@ -37,9 +36,12 @@ validarSenha(){
 }
 atualizarDados(){
   if(this.formulario.value.senha == this.formulario.value.confirmarSenha && this.formulario.valid){
-    let usuario : Usuario = new Usuario(this.usuario.id,this.formulario.value.usuario, this.formulario.value.nome, this.formulario.value.senha)
+    let usuario : Usuario = new Usuario(this.usuario.id,this.usuario.usuario,null, this.formulario.value.nome, this.formulario.value.senha)
     console.log(usuario)
-    this.service.updateUsuario(usuario).subscribe((response:any) => console.log(response))
+    this.service.updateUsuario(usuario).subscribe((response:any) => {
+      console.log(response)
+      alert('Atualização feita com sucesso!')
+    })
   }
 }
 }

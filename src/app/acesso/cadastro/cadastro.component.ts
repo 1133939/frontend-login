@@ -26,7 +26,7 @@ this.exibirLogin.emit('login');
   }
 cadastrarUsuario() : void{
   if(this.form.value.confirmarSenha == this.form.value.senha && this.form.valid){
-  let usuario : Usuario = new Usuario(null, this.form.value.usuario, this.form.value.nome, this.form.value.senha)
+  let usuario : Usuario = new Usuario(null, this.form.value.usuario, 0, this.form.value.nome, this.form.value.senha)
     this.service.insertUsuario(usuario).subscribe((response : number) => {
       console.log(response)
       alert('Cadastrado com sucesso')

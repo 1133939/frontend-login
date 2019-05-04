@@ -1,11 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand">Home</a>
+      <a class="navbar-brand">{{usuario.usuario}} Tickets: {{usuario.tickets}} tickets</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Alterna navegação">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+            <a class="nav-link" (click)="showMinhasRifas()">Minhas Rifas</a>
+          </li>
       <li class="nav-item">
         <a class="nav-link" (click)="showAtualizarDados()">Atualizar Dados</a>
       </li>
@@ -14,17 +17,20 @@
         </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" #pesquisaString>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="showPesquisar(pesquisaString.value)">Pesquisar</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar...rifas..." (keyup)="pesquisa(pesquisaString.value)" #pesquisaString>
     </form>
   </div>
 </nav>
 <div class="centro" *ngIf="atualizar">
   <app-atualizar-dados></app-atualizar-dados>
 </div>
+<div class="centro" *ngIf="minhasRifas">
+  <app-minhas-rifas></app-minhas-rifas>
+</div>
+
 <div class="centro" *ngIf="pesquisar">
 
-<div *ngFor="let rifa of rifas; let i = index">     
+<div *ngFor="let rifa of rifas | async; let i = index">     
 
         <div class="card">
           <div class="card-block">
@@ -33,21 +39,13 @@
             <p class="preco">Faltam {{rifa.quantidade - rifa.usuarios.length}} rifas para o sorteio</p>
             <p class="preco">Qtd total de rifas: {{rifa.quantidade}}</p>
             <div *ngIf="i%2==0; else changeButtonColor">
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="color:yellow;">Adquirir rifa</button>
+                <button style="color:yellow;" type="button" class="btn btn-primary btn-lg btn-block" (click)="adquirirRifa(rifa)">Adquirir rifa</button>
             </div>
             <ng-template #changeButtonColor>
-                <button type="button" class="btn btn-primary btn-lg btn-block">Adquirir rifa</button>
+                <button type="button" class="btn btn-primary btn-lg btn-block"(click)="adquirirRifa(rifa)">Adquirir rifa</button>
             </ng-template>
-            
-            
-          </div>
+           </div>
+           <hr>
       </div>
-
-    
   </div>
-
-
-
-
-
   </div>

@@ -7,6 +7,11 @@
 a.nav-link{
     cursor:pointer;
 }
+a.navbar.brand{
+    font-size: small;
+    text-align:center;  
+    color:rgb(0, 0, 0)
+}
 p{
     font-size: small;
     text-align:center;  

@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ROUTES } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
+import { MinhasRifasComponent } from './home/minhas-rifas/minhas-rifas.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     CadastroComponent,
     HomeComponent,
-    AtualizarDadosComponent
+    AtualizarDadosComponent,
+    MinhasRifasComponent
   ],
   imports: [
     BrowserModule,
