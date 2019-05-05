@@ -1,3 +1,22 @@
-<p>
-  minhas-rifas works!
-</p>
+
+<div *ngFor="let rifa of rifas; let i = index">     
+
+  <div class="card">
+    <div class="card-block">
+      <h4 class="card-title">{{rifa.nome}}</h4>
+      <p class="card-text">Status: {{rifa.estado}}</p>
+      <div *ngIf="rifa.estado=='PENDENTE'; else otherStatus">
+      <p class="preco">Faltam {{rifa.quantidade - rifa.usuarios.length}} rifas para o sorteio</p>
+      <p class="preco">Qtd total de rifas: {{rifa.quantidade}}</p>
+      <p class="preco">Meus tickets: {{qtdRifas(rifa)}}</p>
+      </div>
+      <ng-template #otherStatus>
+          <p class="preco">Vencedor: {{rifa.sorteio.usuarioVencedor.usuario}}</p>
+    </ng-template>
+    <div *ngIf="rifa.sorteio!== null && rifa.sorteio.usuarioVencedor.usuario==usuario">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Quero meu prêmio</button>
+    </div>
+     </div>
+     <hr>
+</div>
+</div>
