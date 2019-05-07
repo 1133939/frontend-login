@@ -1,4 +1,4 @@
-
+<div *ngIf="rifas == null; else rifasVazio">
 <div *ngFor="let rifa of rifas; let i = index">     
 
   <div class="card">
@@ -20,3 +20,7 @@
      <hr>
 </div>
 </div>
+</div>
+<ng-template #rifasVazio>
+  <p>Você ainda não possui rifas!</p>
+</ng-template>

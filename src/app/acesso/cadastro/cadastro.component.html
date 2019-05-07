@@ -2,11 +2,14 @@
     <form [formGroup]="form" novalidate (ngSubmit)="cadastrarUsuario()">
       <div class="form-group">
         <label for="exampleInputEmail1">Usuário</label>
-        <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username"
+        <input type="text" class="form-control" id="exampleInputUsername" placeholder="Username" #stringUser (keyup)="usuarioExistente(stringUser.value)"
         formControlName="usuario">
         <small class="form-text text-danger" *ngIf="form.get('usuario').invalid && form.get('usuario').touched">
           Usuário inválido
         </small>     
+        <small class="form-text text-danger" *ngIf="form.get('usuario').pending && form.get('usuario').touched">
+          Usuário já cadastrado
+        </small> 
         <label for="exampleInputEmail1">Apelido</label>
         <input type="text" class="form-control" id="exampleInputNickname  " placeholder="Nickname"
         formControlName="nome">

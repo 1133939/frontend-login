@@ -19,6 +19,7 @@ public termoPesquisa : string
 public minhasRifas : boolean = false;
 public atualizar: boolean = false;
 public pesquisar: boolean = false;
+public homePage: boolean = true;
 public rifas : Observable<Array<Rifa>>;
 public usuario : Usuario = new Usuario(null,null,null,null,null);
 public jwtHelperService: JwtHelperService  = new JwtHelperService ();
@@ -60,6 +61,7 @@ private subjectPesquisa : Subject<string> = new Subject<string>()
       this.atualizar=false;
       this.minhasRifas=false;
       this.pesquisar=true;
+      this.homePage=false;
       this.subjectPesquisa.next(pesquisa)
 
      }
@@ -68,16 +70,23 @@ private subjectPesquisa : Subject<string> = new Subject<string>()
     this.pesquisar= false;
     this.minhasRifas=false;
     this.atualizar= true;
+    this.homePage=false;
   }
   showMinhasRifas(){
     this.pesquisar= false;
     this.minhasRifas=true;
     this.atualizar= false;
+    this.homePage=false;
   }
   logout(){
     localStorage.setItem('user',null);
      this.router.navigate(['/'])
-
+  }
+  showHome(){
+    this.pesquisar= false;
+    this.minhasRifas=false;
+    this.atualizar= false;
+this.homePage=true;
   }
   adquirirRifa(rifa : Rifa){
     console.log('adquirirrifa')
