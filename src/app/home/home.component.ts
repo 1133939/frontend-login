@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+
 import { RifaService } from '../rifa.service';
 import { Rifa } from '../model/rifa.model';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Usuario } from '../model/usuario.model';
 import { UsuarioService } from '../usuario.service';
